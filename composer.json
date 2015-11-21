@@ -1,5 +1,7 @@
 {
 	"require" : {
-		"twbs/bootstrap" : "^3.3"
+		"twbs/bootstrap" : "^3.3",
+		"components/jquery": "^2.1",
+		"itguy614/knockout": "^3.3"
 	}
 }

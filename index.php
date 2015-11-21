@@ -1,5 +1,7 @@
 <?php
 $relBootStrapPath = "vendor/twbs/bootstrap/dist/";
+$relJQueryPath = "vendor/components/jquery/";
+$relKnockoutPath = "vendor/itguy614/knockout/js/";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,8 +12,12 @@ $relBootStrapPath = "vendor/twbs/bootstrap/dist/";
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Bootstrap 101 Template</title>
 
+    <!-- JQuery -->
+    <!-- <script src="<?=$relJQueryPath?>jquery.min.js"></script> -->
     <!-- Bootstrap -->
     <link href="<?=$relBootStrapPath?>css/bootstrap.min.css" rel="stylesheet">
+    <!-- Knockout -->
+    <script src="<?=$relKnockoutPath?>knockout.js"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -33,7 +39,7 @@ $relBootStrapPath = "vendor/twbs/bootstrap/dist/";
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">p1n</a>
+          <a class="navbar-brand" href="#">P1N your url!</a>
         </div>
 <!-- 
         <div id="navbar" class="navbar-collapse collapse">
@@ -61,8 +67,12 @@ $relBootStrapPath = "vendor/twbs/bootstrap/dist/";
 	
 	<div class="container" role="main">
 	
-      <div class="jumbotron">
-      </div>	
+	<div id="topalign">
+		<p>&nbsp;</p>
+		<p>&nbsp;</p>	
+	</div>
+	
+      <div data-bind="visible: showNewUrl"><h4>short url</h4></div>	
 	
 	
       <form class="form">
@@ -72,11 +82,20 @@ $relBootStrapPath = "vendor/twbs/bootstrap/dist/";
         <button class="btn btn-lg btn-primary btn-block" type="submit">Get short url!</button>
       </form>    
      </div>
+     
+<script type="text/javascript">
+    var viewModel = {
+    		showNewUrl: ko.observable(true) // Message initially visible
+    };
+    
+   viewModel.showNewUrl(false); // ... now it's hidden
+   // viewModel.showNewUrl(true); // ... now it's visible again
+</script>     
 
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="<?=$relBootStrapPath?>js/bootstrap.min.js"></script>
+    <!-- <script src="<?=$relBootStrapPath?>js/bootstrap.min.js"></script> -->
   </body>
 </html>

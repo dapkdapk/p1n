@@ -2,3 +2,6 @@ vendor/
 .buildpath
 composer.lock
 .settings/
+_temp/
+data/*
+!data/.placeholder

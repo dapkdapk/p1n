@@ -6,6 +6,7 @@ if (version_compare ( PHP_VERSION, '5.2.6' ) < 0)
 	die ( 'p1n requires php 5.2.6 or above to work. Sorry.' );
 require_once "3rd/lib/serversalt.php";
 require_once "3rd/lib/functions.zerobin.php";
+require_once "cfg/config.inc.php";
 require_once "lib/p1n.php";
 
 $relBootStrapPath = "vendor/twbs/bootstrap/dist/";
@@ -17,7 +18,7 @@ $rel3rdPath = "3rd/";
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>P1N - Encrypt your url!</title>
+<title>P1N URL</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -62,8 +63,7 @@ $rel3rdPath = "3rd/";
 						class="icon-bar"></span>
 				</button>
 				<a class="navbar-brand"
-					href="javascript:window.location=scriptLocation();">P1N - Encrypt
-					your url!</a>
+					href="javascript:window.location=scriptLocation();">P1N URL</a>
 			</div>
 
 		</div>
@@ -78,11 +78,24 @@ $rel3rdPath = "3rd/";
 
 		<div data-bind="visible: showNewUrl" class="alert alert-success"
 			role="alert">
-			<span class="glyphicon glyphicon-ok" aria-hidden="true"></span> <span
-				class="sr bold">Generated:</span> <a
+			<!-- <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> -->
+			<span class="sr bold">Encrypted:</span> <a
 				data-bind="attr: {href: urlString}" target="_blank"> <span
 				data-bind="text: urlString" style="font-weight: bold;"></span>
-			</a>
+			</a> &nbsp;
+
+			<button data-bind="visible: shortUrlButton, click: getShortUrl"
+				type="button" class="btn btn-default btn-xs">
+				<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+				GET SHORTURL
+			</button>
+
+			<span data-bind="visible: shortUrlSpan"><br />
+			<br /> <span class="sr bold">Shorturl:</span> <a
+				data-bind="attr: {href: shortUrlString}" target="_blank"> <span
+					data-bind="text: shortUrlString" style="font-weight: bold;"></span>
+			</a> </span>
+
 			<div align="right">
 				<a data-bind="attr: {href: deleteUrl}" target="_top"> <span
 					class="glyphicon glyphicon-trash"></span>
@@ -104,13 +117,14 @@ $rel3rdPath = "3rd/";
 		</div>
 
 		<form class="form" data-bind="visible: showForm">
-			<h2 class="form-heading">Enter your url</h2>
+			<h4 class="form-heading">Enter your url</h4>
 			<label for="inputUrl" class="sr-only">http://</label> <input
-				data-bind="textInput: rawUrlString" type="url" id="inputUrl"
-				class="form-control" placeholder="http://" required autofocus>
+				data-bind="textInput: rawUrlString, value: enterText, valueUpdate: 'afterkeydown', 
+    event: { keypress: enterKeyboardCmd}"
+				type="url" id="inputUrl" class="form-control" placeholder="http://"
+				required autofocus>
 			<button data-bind="click: generateUrl"
-				class="btn btn-lg btn-primary btn-block" type="submit">Get encrypted
-				url!</button>
+				class="btn btn-lg btn-primary btn-block" type="submit">GET</button>
 		</form>
 	</div>
 

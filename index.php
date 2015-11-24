@@ -17,12 +17,11 @@ $rel3rdPath = "3rd/";
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>P1N</title>
+<title>P1N - Encrypt your url!</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-<title>Bootstrap 101 Template</title>
 
 <!-- JQuery -->
 <script src="<?=$relJQueryPath?>jquery.min.js"></script>
@@ -63,7 +62,8 @@ $rel3rdPath = "3rd/";
 						class="icon-bar"></span>
 				</button>
 				<a class="navbar-brand"
-					href="javascript:window.location=scriptLocation();">P1N your url!</a>
+					href="javascript:window.location=scriptLocation();">P1N - Encrypt
+					your url!</a>
 			</div>
 
 		</div>
@@ -109,7 +109,7 @@ $rel3rdPath = "3rd/";
 				data-bind="textInput: rawUrlString" type="url" id="inputUrl"
 				class="form-control" placeholder="http://" required autofocus>
 			<button data-bind="click: generateUrl"
-				class="btn btn-lg btn-primary btn-block" type="submit">Get short
+				class="btn btn-lg btn-primary btn-block" type="submit">Get encrypted
 				url!</button>
 		</form>
 	</div>

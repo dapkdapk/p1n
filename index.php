@@ -97,7 +97,7 @@ $rel3rdPath = "3rd/";
 			</a> </span>
 
 			<div align="right">
-				<a data-bind="attr: {href: deleteUrl}" target="_top"> <span
+				<a data-bind="attr: {href: deleteUrl}" target="_self"> <span
 					class="glyphicon glyphicon-trash"></span>
 				</a>
 			</div>

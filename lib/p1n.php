@@ -42,6 +42,17 @@ function decrypt($encrypted, $password = "", $salt = '!kQm*fF3pXe1Kbm%9') {
 	return $decrypted;
 }
 
+function cleanurl($u){
+		$a = explode("://", $u);
+		$b = str_replace("//","/",$a[1]);
+		$c = $a[0]."://".$b;
+		if(substr($c, -2) == "//"){
+			return substr($c,0, -1);
+		} else {
+			return $c;
+		}
+}
+
 if (get_magic_quotes_gpc ()) {
 	function stripslashes_deep($value) {
 		$value = is_array ( $value ) ? array_map ( 'stripslashes_deep', $value ) : stripslashes ( $value );
@@ -65,10 +76,10 @@ if (! empty ( $_POST ['shorturl'] )) {
 		);
 		$codeenc = aksencode ( serialize ( $code ) );
 		file_put_contents ( 'data/' . $code [0] . '/' . $code [1] . '/' . urlencode ( $codeenc ), encrypt ( $shorturl ) );
-		
+		$newurl = cleanurl((@$_SERVER ['HTTPS'] || (strpos(@$_SERVER['HTTP_VIA'], "ssl") != "") ? "https" : "http") . "://" . $_SERVER ["HTTP_HOST"] . (dirname ( $_SERVER ["PHP_SELF"] ) == "\\" ? "" : dirname ( $_SERVER ["PHP_SELF"] )) . (dirname ( $_SERVER ["PHP_SELF"] )!=""?"/":"") . (ENABLE_MODREWRITE ? "" : "?s=") . $code [0] . $code [1]);
 		echo json_encode ( array (
 				'status' => 0,
-				'shorturl' => (@$_SERVER ['HTTPS'] ? "https" : "http") . "://" . $_SERVER ["HTTP_HOST"] . (dirname ( $_SERVER ["PHP_SELF"] ) == "\\" ? "" : dirname ( $_SERVER ["PHP_SELF"] )) . "/" . (ENABLE_MODREWRITE ? "" : "?s=") . $code [0] . $code [1],
+				'shorturl' => $newurl,
 				'message' => 'Shorturl was created.' 
 		) );
 		exit ();

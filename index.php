@@ -9,6 +9,7 @@ require_once "3rd/lib/functions.zerobin.php";
 require_once "cfg/config.inc.php";
 require_once "lib/p1n.php";
 
+$title = "P1N";
 $relBootStrapPath = "vendor/twbs/bootstrap/dist/";
 $relJQueryPath = "vendor/components/jquery/";
 $relKnockoutPath = "vendor/itguy614/knockout/js/";
@@ -18,7 +19,7 @@ $rel3rdPath = "3rd/";
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>P1N URL</title>
+<title><?=$title?> URL</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -63,7 +64,7 @@ $rel3rdPath = "3rd/";
 						class="icon-bar"></span>
 				</button>
 				<a class="navbar-brand"
-					href="javascript:window.location=scriptLocation();">P1N URL</a>
+					href="javascript:window.location=scriptLocation();"><?=$title?> URL</a>
 			</div>
 
 		</div>
@@ -90,8 +91,8 @@ $rel3rdPath = "3rd/";
 				GET SHORTURL
 			</button>
 
-			<span data-bind="visible: shortUrlSpan"><br />
-			<br /> <span class="sr bold">Shorturl:</span> <a
+			<span data-bind="visible: shortUrlSpan"><br /> <br /> <span
+				class="sr bold">Shorturl:</span> <a
 				data-bind="attr: {href: shortUrlString}" target="_blank"> <span
 					data-bind="text: shortUrlString" style="font-weight: bold;"></span>
 			</a> </span>
@@ -126,8 +127,27 @@ $rel3rdPath = "3rd/";
 			<button data-bind="click: generateUrl"
 				class="btn btn-lg btn-primary btn-block" type="submit">GET</button>
 		</form>
-	</div>
+		<p>&nbsp;</p>
 
+		<footer>
+			<cite>Encrypted urls for one day!</cite> | <a
+				href="https://github.com/dapkdapk/p1n" target="_blank">source</a> |
+
+			<a href="#" data-toggle="modal" data-target=".bs-example-modal-lg">Disclaimer</a>
+		</footer>
+
+
+		<div class="modal fade bs-example-modal-lg" tabindex="-1"
+			role="dialog" aria-labelledby="myLargeModalLabel">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content">
+					<iframe src="<?=(@$_SERVER ['HTTPS'] || (strpos(@$_SERVER['HTTP_VIA'], "ssl") != "") ? "https" : "http")?>://ourdisclaimer.com/?i=<?=$title?>" width="100%"
+						height="600"></iframe>
+				</div>
+			</div>
+		</div>
+
+	</div>
 	<div id="cipherdata" style="display: none;"><?=$CIPHERDATA?></div>
 	<div id="errormessage" style="display: none;"><?=$ERRORMESSAGE?></div>
 	<div id="statusmessage" style="display: none;"><?=$STATUS?></div>

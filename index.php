@@ -123,6 +123,31 @@ $rel3rdPath = "3rd/";
     event: { keypress: enterKeyboardCmd}"
 				type="url" id="inputUrl" class="form-control" placeholder="http://"
 				required autofocus>
+
+<div class="item row">
+  <div class="col-xs-2">
+    <label>
+      <input type="checkbox" > Burn after clicking
+    </label>
+  </div>
+  <div class="col-xs-3">
+  			<label for="expiresSelect"> Expires
+<select id="expiresSelect" class="form-control">
+       <option value="5min">5 minutes</option>
+        <option value="10min">10 minutes</option>
+        <option value="1hour">1 hour</option>
+        <option value="1day">1 day</option>
+        <option value="1week">1 week</option>
+        <option value="1month" selected="selected">1 month</option>
+        <option value="1year">1 year</option>
+        <option value="never">Never</option>
+
+</select>
+</label>   
+  </div>
+</div>				
+  
+				
 			<button data-bind="click: generateUrl"
 				class="btn btn-lg btn-primary btn-block" type="submit">GET</button>
 		</form>

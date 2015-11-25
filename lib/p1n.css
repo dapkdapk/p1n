@@ -22,3 +22,17 @@
         transform: rotate(359deg);
     }
 }
+.row label {
+    float: left;
+    text-align: left;
+    font-weight: normal;
+}
+
+.row select {
+    display: inline-block;
+    width: auto;
+    vertical-align: middle;
+}
+div.col-xs-2 label{
+	padding-top: 5px;
+}

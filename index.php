@@ -9,7 +9,7 @@ require_once "3rd/lib/functions.zerobin.php";
 require_once "cfg/config.inc.php";
 require_once "lib/p1n.php";
 
-$title = strtoupper($_SERVER ["HTTP_HOST"]);
+$title = strtoupper ( $_SERVER ["HTTP_HOST"] );
 $relBootStrapPath = "vendor/twbs/bootstrap/dist/";
 $relJQueryPath = "vendor/components/jquery/";
 $relKnockoutPath = "vendor/itguy614/knockout/js/";
@@ -80,22 +80,24 @@ $rel3rdPath = "3rd/";
 		<div data-bind="visible: showNewUrl" class="alert alert-success"
 			role="alert">
 			<!-- <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> -->
-			<span class="sr bold">Encrypted:</span> <a
-				data-bind="attr: {href: urlString}" target="_blank"> <span
+			<h4>Encrypted:</h4>
+			<a data-bind="attr: {href: urlString}" target="_blank"> <span
 				data-bind="text: urlString" style="font-weight: bold;"></span>
-			</a> &nbsp;
+			</a> <br />
+			<br />
 
 			<button data-bind="visible: shortUrlButton, click: getShortUrl"
-				type="button" class="btn btn-default btn-xs">
+				type="button" class="btn btn-primary btn-xs">
 				<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
 				GET SHORTURL
 			</button>
 
-			<span data-bind="visible: shortUrlSpan"><br /> <br /> <span
-				class="sr bold">Shorturl:</span> <a
-				data-bind="attr: {href: shortUrlString}" target="_blank"> <span
-					data-bind="text: shortUrlString" style="font-weight: bold;"></span>
-			</a> </span>
+			<span data-bind="visible: shortUrlSpan">
+				<h4>Shorturl:</h4> <a data-bind="attr: {href: shortUrlString}"
+				target="_blank"> <span data-bind="text: shortUrlString"
+					style="font-weight: bold;"></span>
+			</a>
+			</span>
 
 			<div align="right">
 				<a data-bind="attr: {href: deleteUrl}" target="_self"> <span
@@ -141,8 +143,9 @@ $rel3rdPath = "3rd/";
 			role="dialog" aria-labelledby="myLargeModalLabel">
 			<div class="modal-dialog modal-lg">
 				<div class="modal-content">
-					<iframe src="<?=(@$_SERVER ['HTTPS'] || (strpos(@$_SERVER['HTTP_VIA'], "ssl") != "") ? "https" : "http")?>://ourdisclaimer.com/?i=<?=$title?>" width="100%"
-						height="600"></iframe>
+					<iframe
+						src="<?=(@$_SERVER ['HTTPS'] || (strpos(@$_SERVER['HTTP_VIA'], "ssl") != "") ? "https" : "http")?>://ourdisclaimer.com/?i=<?=$title?>"
+						width="100%" height="600"></iframe>
 				</div>
 			</div>
 		</div>

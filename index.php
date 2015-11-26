@@ -9,7 +9,7 @@ require_once "3rd/lib/functions.zerobin.php";
 require_once "cfg/config.inc.php";
 require_once "lib/p1n.php";
 
-$title = "P1N";
+$title = strtoupper($_SERVER ["HTTP_HOST"]);
 $relBootStrapPath = "vendor/twbs/bootstrap/dist/";
 $relJQueryPath = "vendor/components/jquery/";
 $relKnockoutPath = "vendor/itguy614/knockout/js/";

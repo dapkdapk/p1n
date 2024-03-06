@@ -44,14 +44,19 @@ function cleanurl($u){
 		}
 }
 
-if (get_magic_quotes_gpc ()) {
-	function stripslashes_deep($value) {
-		$value = is_array ( $value ) ? array_map ( 'stripslashes_deep', $value ) : stripslashes ( $value );
-		return $value;
-	}
-	$_POST = array_map ( 'stripslashes_deep', $_POST );
-	$_GET = array_map ( 'stripslashes_deep', $_GET );
-	$_COOKIE = array_map ( 'stripslashes_deep', $_COOKIE );
+function stripslashes_deep($value){
+    $value = is_array($value) ?
+                array_map('stripslashes_deep', $value) :
+                stripslashes($value);
+    return $value;
+}
+
+if(	
+	(function_exists("get_magic_quotes_gpc") && get_magic_quotes_gpc()) || 
+	(ini_get('magic_quotes_sybase') && (strtolower(ini_get('magic_quotes_sybase'))!="off")) ){
+    stripslashes_deep($_GET);
+    stripslashes_deep($_POST);
+    stripslashes_deep($_COOKIE);
 }
 
 if (! empty ( $_POST ['shorturl'] )) {
@@ -220,10 +225,9 @@ $CIPHERDATA = '';
 $ERRORMESSAGE = '';
 $STATUS = '';
 
-if (! empty ( $_GET ['deletetoken'] ) && ! empty ( $_GET ['pasteid'] )) // Delete an existing paste
-{
+if (! empty ( $_GET ['deletetoken'] ) && ! empty ( $_GET ['pasteid'] )) {
 	list ( $CIPHERDATA, $ERRORMESSAGE, $STATUS ) = processPasteDelete ( $_GET ['pasteid'], $_GET ['deletetoken'] );
-} else if (! empty ( $_SERVER ['QUERY_STRING'] )) // Return an existing paste.
-{
+} else if (! empty ( $_SERVER ['QUERY_STRING'] )) {
 	list ( $CIPHERDATA, $ERRORMESSAGE, $STATUS ) = processPasteFetch ( $_SERVER ['QUERY_STRING'] );
 }
+?>

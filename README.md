@@ -7,6 +7,6 @@ install composer for dependencies
 `$ php composer.phar install`
 
 # demo
-[[https://p1n.2ix.de/]
+[https://p1n.2ix.de/]
 
 

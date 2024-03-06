@@ -2,8 +2,6 @@
 /**
  * dapkdapk
  */
-if (version_compare(PHP_VERSION, '5.2.6') < 0)
-	die('p1n requires php 5.2.6 or above to work. Sorry.');
 require_once "3rd/lib/serversalt.php";
 require_once "3rd/lib/functions.zerobin.php";
 require_once "cfg/config.inc.php";

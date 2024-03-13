@@ -5,3 +5,4 @@ composer.lock
 _temp/
 data/*
 !data/.placeholder
+.vscode

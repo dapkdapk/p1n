@@ -7,6 +7,7 @@ install composer for dependencies
 `$ php composer.phar install`
 
 # demo
-[https://p1n.2ix.de/]
+Launch for Demo here: https://p1n.2ix.de/
 
+(Thanks to https://www.lima-city.de/ for hosting)
 
